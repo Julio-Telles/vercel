@@ -44,7 +44,7 @@ export default function RootLayout({
 /* the following code is about the DRAWER */
 const [state, setState] = React.useState(false);
 
-const toggleDrawer = (open) => (event) => {
+const toggleDrawer = (open: boolean) => (event) => {
   if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
     return;
   }
