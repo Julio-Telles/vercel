@@ -1,8 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## INSTALAÇÃO INICIAL
 
-## Getting Started
+Para poder rodar, é necessário gerar o projeto [`npx create-next-app@latest <nomedoprojeto>`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Copiar todos os arquivos que não estão nas pastas node_modules e .next
 
-First, run the development server:
+## INSTALAÇÃO DAS DEPENDÊNCIAS
+
+As seguintes dependências precisam ser instaladas no projeto:
+- [npm install @mui/material @emotion/react @emotion/styled](https://mui.com/material-ui/)
+- [npm i @mui/icons-material](https://www.npmjs.com/package/@mui/icons-material)
+- [npm install react-bootstrap bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
+- [npm i react-currency-input-field] (https://www.npmjs.com/package/react-currency-input-field)
+- [npm i zod](https://docs.deno.com/runtime/manual/getting_started/installation)
+
+## PARA RODAR O PROJETO LOCAL
+
+abra o terminal, entre na pasta do projeto e digite um dos comandos:
 
 ```bash
 npm run dev
@@ -14,23 +26,16 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Entre no endereço [http://localhost:3000](http://localhost:3000) com o seu navegador e veja o front no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## PARA NAVEGAR ENTRE AS PÁGINAS
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+basta adicionar o diretório da página que deseja abrir:
++ http://localhost:3000/produtos -> para abrir a página de produtos
++ http://localhost:3000/vendas -> para abrir a página de vendas
 
-## Learn More
+## REPOSITÓRIO PARA DEPLOY DO PROJETO
 
-To learn more about Next.js, take a look at the following resources:
+[GitHub do projeto](A DEFINIR)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
