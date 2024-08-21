@@ -68,7 +68,7 @@ const list = () => (
     ></Image>       
 
     <p></p>
-    
+
     <Button 
       variant="contained" 
       style={{background: Colors.botaoComum, textTransform: 'none', width: 170 }}
@@ -120,8 +120,7 @@ const list = () => (
         <IconButton 
           edge="start"
           aria-label="open drawer"
-          size="large" 
-          color="black"
+          size="large"
           onClick={toggleDrawer(true)}
           >
             <MenuIcon fontSize="inherit"/>
