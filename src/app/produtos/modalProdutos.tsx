@@ -11,7 +11,7 @@ import AdicionarIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import Colors from '@/app/utils/colors'
 
-export default function ModalProdutos(props) {
+export default function ModalProdutos(props: any) {
     return (
         <Modal
           {...props}
@@ -40,11 +40,10 @@ export default function ModalProdutos(props) {
 
                 <Form.Group className="mb-1" controlId="formBasicPassword">
                     <Form.Label>Thumbnail</Form.Label>
-                    <Button 
+                    <Button
                     variant="contained" 
                     style={{height: 70, color: Colors.botaoComum, background: Colors.branco, textAlign: 'left', textTransform: 'none', width: '100%', border: '2px dashed', borderColor: Colors.botaoComum }}
                     onClick={() => alert("uploaded")}
-                    verticalAlign='center'
                     >
                         
                         <Stack spacing={0}>
