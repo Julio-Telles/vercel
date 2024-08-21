@@ -54,11 +54,11 @@ const toggleDrawer = (open: boolean) => (event: any) => {
 
 const list = () => (
   <Box
+    component="main"
     sx={{ width: 200 }}
     role="presentation"
     onClick={toggleDrawer(false)}
-    onKeyDown={toggleDrawer(false)}    
-    verticalAlign= 'center'
+    onKeyDown={toggleDrawer(false)}
     textAlign= 'center'
   >
     <Image 
@@ -67,34 +67,33 @@ const list = () => (
       width={155}
     ></Image>       
 
-    <List spacing={2}>
+    <p></p>
     
-        <Button 
-          variant="contained" 
-          style={{background: Colors.botaoComum, textTransform: 'none', width: 170 }}
-          startIcon={<ProdutosIcon style={{transform: 'rotate(270deg)' }} />}
-          href="/produtos"
-        >
-          Produtos
-        </Button>
+    <Button 
+      variant="contained" 
+      style={{background: Colors.botaoComum, textTransform: 'none', width: 170 }}
+      startIcon={<ProdutosIcon style={{transform: 'rotate(270deg)' }} />}
+      href="/produtos"
+    >
+      Produtos
+    </Button>
 
-        <p></p>
+    <p></p>
 
-        <Button 
-          variant="contained" 
-          style={{background: Colors.botaoComum, textTransform: 'none', width: 170 }} 
-          startIcon={<VendasIcon />}
-          href="/vendas"
-        >
-          Vendas
-        </Button>
-        
-        {/*
-        <Button variant="contained" startIcon={<VerificadoIcon />}>
-          Verificado
-        </Button>
+    <Button 
+      variant="contained" 
+      style={{background: Colors.botaoComum, textTransform: 'none', width: 170 }} 
+      startIcon={<VendasIcon />}
+      href="/vendas"
+    >
+      Vendas
+    </Button>
+    
+    {/*
+    <Button variant="contained" startIcon={<VerificadoIcon />}>
+      Verificado
+    </Button>
 */}
-    </List>
   </Box>
 );
 
@@ -142,7 +141,6 @@ const list = () => (
           src={logoIcon}
           alt="TELMEX logo"
           width={150}
-          justifyContent='center' 
         ></Image>    
 
         </Toolbar>
