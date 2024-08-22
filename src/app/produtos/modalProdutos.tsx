@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from 'react';
+
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Stack from '@mui/material/Stack';
@@ -11,8 +15,44 @@ import AdicionarIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import Colors from '@/app/utils/colors'
 
+type FormValues = {
+  name: string
+  description: string
+  file: string
+  price: string
+}
+
 export default function ModalProdutos(props: any) {
+    const [file, setFile] = useState<File | null>(null);
+    const [register, setRegister] = useState<FormValues>();
+    const [image, setImage] = useState('fazer upload');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("file", file as Blob);
+
+        const response = await fetch("/api/file", {
+            method: 'POST',
+            body: formData
+        })
+
+        const resp = await response.json();
+
+        setImage('UPLOAD COM SUCESSO!')
+        console.log("--->>> " + resp.url)
+    }
+
+    const clicar = () => {
+        //alert('clicado')
+        //handleSubmit(onSubmit)
+        setImage('fazer upload');
+        props.onHide()
+    }
+    
     return (
+        
         <Modal
           {...props}
           size="md"
@@ -40,27 +80,28 @@ export default function ModalProdutos(props: any) {
 
                 <Form.Group className="mb-1" controlId="formBasicPassword">
                     <Form.Label>Thumbnail</Form.Label>
-                    <Button
-                    variant="contained" 
-                    style={{height: 70, color: Colors.botaoComum, background: Colors.branco, textAlign: 'left', textTransform: 'none', width: '100%', border: '2px dashed', borderColor: Colors.botaoComum }}
-                    onClick={() => alert("uploaded")}
-                    >
-                        
-                        <Stack spacing={0}>
 
-                            <IconButton>
-                                <UploadIcon />
-                            </IconButton>
-                            
-                            <Typography gutterBottom variant="h6" component="div">
-                                Upload
-                            </Typography>
-
-                        </Stack>
-                        
-                    </Button>
-                    
+                        <IconButton>
+                            <UploadIcon />
+                        </IconButton>
+                                                
                 </Form.Group>
+
+            </Form>
+
+                <form 
+                    onSubmit={handleSubmit}
+                    style={{height: 70, color: Colors.botaoComum, background: Colors.branco, textAlign: 'left', textTransform: 'none', width: '100%', border: '2px dashed', borderColor: Colors.botaoComum }}
+                >
+                    <input
+                        type="file"
+                        onChange={(e) => setFile(e.target.files?.item(0) || null)}
+                    />
+                    <button type='submit'>Upload</button>
+                    <>{image}</>
+                </form>
+                
+            <Form>
 
                 <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Preço</Form.Label>
@@ -68,7 +109,7 @@ export default function ModalProdutos(props: any) {
                     <CurrencyInput
                         id="input-example"
                         name="input-name"
-                        placeholder="R$ 0,00"
+                        placeholder="R$ 0.00"
                         decimalsLimit={2}
                         onValueChange={(value, name, values) => console.log(value, name, values)}
                     />
@@ -79,7 +120,7 @@ export default function ModalProdutos(props: any) {
                     variant="contained" 
                     style={{background: Colors.botaoComum, textTransform: 'none', width: '100%', height: 40 }} 
                     endIcon={<AdicionarIcon />}
-                    onClick={props.onHide}
+                    onClick={clicar}
                 >
                     Criar produto
                 </Button>

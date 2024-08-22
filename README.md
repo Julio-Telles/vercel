@@ -11,10 +11,21 @@ As seguintes dependências precisam ser instaladas no projeto:
 - [npm install react-bootstrap bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction)
 - [npm i react-currency-input-field] (https://www.npmjs.com/package/react-currency-input-field)
 - [npm i zod](https://docs.deno.com/runtime/manual/getting_started/installation)
+- [npm i -g vercel](https://www.npmjs.com/package/@vercel/blob) || [npm i @vercel/blob](https://www.npmjs.com/package/@vercel/blob)
+- [npm install axios] (https://axios-http.com/docs/intro)
+
 
 ## PARA RODAR O PROJETO LOCAL
 
 abra o terminal, entre na pasta do projeto e digite um dos comandos:
+
+-> "vercel login" : selecione autenticar pelo Github
+
+-> após ser direcionado pelo Github e ver a mensagem "Vercel CLI Login Success" no browser, basta fechar e prosseguir
+
+-> digitar "vercel" no terminal e prosseguir com as instruções
+
+-> digitar "vercel env pull" no terminal pra criar o 'BLOB_READ_WRITE_TOKEN' dentro do arquivo .env.local
 
 ```bash
 npm run dev
