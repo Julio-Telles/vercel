@@ -4,9 +4,7 @@ import { useState } from 'react';
 
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CurrencyInput from 'react-currency-input-field';
 
@@ -15,18 +13,17 @@ import AdicionarIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import Colors from '@/app/utils/colors'
 
-type FormValues = {
-  name: string
-  description: string
-  file: string
-  price: string
+var data = {
+  name: "",
+  description: "",
+  file: "",
+  price: "",
 }
 
 export default function ModalProdutos(props: any) {
     const [file, setFile] = useState<File | null>(null);
-    const [register, setRegister] = useState<FormValues>();
     const [image, setImage] = useState('fazer upload');
-
+    
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -41,14 +38,34 @@ export default function ModalProdutos(props: any) {
         const resp = await response.json();
 
         setImage('UPLOAD COM SUCESSO!')
-        console.log("--->>> " + resp.url)
+
+        data["file"] = resp.url;
+        console.log("--->>> " + JSON.stringify(data))
     }
 
     const clicar = () => {
-        //alert('clicado')
-        //handleSubmit(onSubmit)
-        setImage('fazer upload');
-        props.onHide()
+        var libera = true;
+
+        Object.entries(data).forEach(([key, value]) => {
+            if (value === "") {
+                libera = false;
+            }
+        });
+
+        if(!libera){
+            alert('Preencha todos os campos')
+        }
+        else{
+            setImage('fazer upload');
+            data["name"] = "";
+            data["description"] = "";
+            data["file"] = "";
+            data["price"] = "";
+
+            props.onHide()
+        }
+
+        //alert('->' + JSON.stringify(data))
     }
     
     return (
@@ -66,16 +83,16 @@ export default function ModalProdutos(props: any) {
           </Modal.Header>
 
           <Modal.Body>
-            
+
             <Form>
                 <Form.Group className="mb-1" controlId="formBasicEmail">
                     <Form.Label>Nome do produto</Form.Label>
-                    <Form.Control type="text" placeholder="Nome" />
+                    <Form.Control type="text" placeholder="Nome" onChange={(e) => data["name"] = e.target.value}/>
                 </Form.Group>
 
                 <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Descrição</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="Descrição" />
+                    <Form.Control as="textarea" rows={3} placeholder="Descrição"  onChange={(e) => data["description"] = e.target.value}/>
                 </Form.Group>
 
                 <Form.Group className="mb-1" controlId="formBasicPassword">
@@ -111,7 +128,8 @@ export default function ModalProdutos(props: any) {
                         name="input-name"
                         placeholder="R$ 0.00"
                         decimalsLimit={2}
-                        onValueChange={(value, name, values) => console.log(value, name, values)}
+                        //onChange={(e) => data["price"] = e.target.value}
+                        onValueChange={(value, name, values) => data["price"] = value!.toString()}
                     />
 
                 </Form.Group>
