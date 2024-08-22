@@ -87,12 +87,12 @@ export default function Produtos() {
             style={{background: Colors.botaoComum, textTransform: 'none', width: 120, height: 40 }} 
             endIcon={<AdicionarIcon />}
             onClick={() => {
-              //setModalShow(true)
+              setModalShow(true)
               let texto = ''
               disponiveis.map((prod) => {
                 texto += prod.name + '\n'
               })
-              alert(texto)
+              //alert(texto)
             }}
           >
             Criar
